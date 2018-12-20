@@ -1,0 +1,6 @@
+#Dane wejściowe do programu Algorytmy szeregujace
+#ID Procesu [ms], Czas nadejścia [ms], Czas wykonywania [ms]
+1,5,5
+2,4,4
+3,0,7
+4,2,4

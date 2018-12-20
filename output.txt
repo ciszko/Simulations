@@ -1,0 +1,22 @@
+################# FIFO #################
+Kolejnoœæ w jakiej wykonaj¹ siê procesy:
+[3][4][2][1]
+[3][3][3][3][3][3][3][4][4][4][4][2][2][2][2][1][1][1][1][1]
+   PID  Czas wykonywania  Czas czekania  Czas przetwarzania
+0    1                 5             10                  15
+1    2                 4              7                  11
+2    3                 7              0                   7
+3    4                 4              5                   9
+Œredni czas oczekiwania = 5.5
+Œredni czas przetwarzania = 10.5
+################# SJF #################
+Kolejnoœæ w jakiej wykonaj¹ siê procesy:
+[4][2][3][1]
+[3][3][4][4][4][4][2][2][2][2][3][3][3][3][3][1][1][1][1][1]
+   PID  Czas wykonywania  Czas czekania  Czas przetwarzania
+0    1                 5             10                  15
+1    2                 4              2                   6
+2    3                 7              7                  14
+3    4                 4              0                   4
+Œredni czas oczekiwania = 4.75
+Œredni czas przetwarzania = 9.75
