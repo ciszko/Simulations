@@ -196,6 +196,38 @@ def process_data_sjf():
         process_list[i].ta_time = process_list[i].w_time + process_list[i].p_time
     process_list_to_int()
 
+    
+    def process_data_sjf2():
+    global processed_string
+    global processed_order
+    global process_list
+    global process_list_int
+    global process_order_sjf
+    process_list = input_list
+    for p in process_list:
+        p.l_time = p.p_time
+        p.w_time = 0
+        p.ta_time = 0
+    current_process = min(process_list, key=attrgetter('a_time', 'l_time'))
+    current_process.is_available = True
+    # process_list.sort(key=attrgetter('a_time', 'id'))
+    for time in range(total_p_time):
+        if current_process.l_time == 0:
+            current_process.is_available = False
+            current_process = min((i for i in process_list if i.l_time > 0), key=lambda x: x.l_time)
+        for p in process_list:
+            if p is not current_process and p.a_time >= time:
+                p.is_available = True
+        for p in process_list:
+            if p is not current_process and p.l_time > 0 and p.a_time <= time:
+                p.w_time += 1
+        current_process.l_time -= 1
+            #print(' ' + str(current_process.priority) + ' ', end='')
+        processed_string += '[' + str(current_process.id) + ']'
+        process_order_sjf.append(int(current_process.id))
+    for i in range(process_q):
+        process_list[i].ta_time = process_list[i].w_time + process_list[i].p_time
+    process_list_to_int()
 
 if __name__ == "__main__":
     process_q = 0
